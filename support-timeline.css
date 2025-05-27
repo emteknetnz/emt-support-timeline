@@ -1,0 +1,131 @@
+:root {
+    /* Primary Palette */
+    --color-background-light: #ECEFF1; /* Material Design Blue Grey 50 */
+    --color-header-background: #CFD8DC; /* Material Design Blue Grey 100 */
+    --color-text-default: #212121;   /* Material Design Grey 900 */
+    --color-outline: #78909C;  /* Material Design Blue Grey 400 */
+    --color-table-background: #ffffff; /* White for table background */
+
+    /* Status Colors */
+    /* Full Support */
+    --color-status-full-bg: #81C784; /* Material Design Green 300 */
+
+    /* Partial Support */
+    --color-status-partial-bg: #FFE082; /* Slightly Darker Light Amber/Yellow (Material Design Amber 200) */
+
+    /* Unsupported */
+    --color-status-unsupported-bg: #EF9A9A; /* Material Design Red 200 */
+
+    /* Pre-release */
+    --color-status-prerelease-bg: #80DEEA; /* Slightly Darker Light Cyan/Teal (Material Design Cyan 200) */
+
+    /* In Development */
+    --color-status-in-development-bg: #90CAF9; /* Slightly Darker Light Blue (Material Design Blue 200) */
+
+    /* Planned */
+    --color-status-planned-bg: #B0BEC5; /* Slightly Darker Light Blue-Grey (Material Design Blue Grey 200) */
+
+    /* Error */
+    --color-status-invalid-dates-bg: #EF9A9A; /* Consistent with new unsupported red (MD Red 200) */
+    --color-status-unknown-bg: #E0E0E0; /* Light Grey (Material Design Grey 300) */
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    margin: 0;
+    background-color: var(--color-background-light);
+    color: var(--color-text-default);
+}
+.container-wrapper {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 56rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.main-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.table-description {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+.table-wrapper {
+    overflow-x: auto;
+}
+.policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: var(--color-table-background);
+}
+.policy-table th, .policy-table td {
+    border: 1px solid var(--color-outline);
+    padding: 0.75rem 1rem;
+}
+.policy-table thead tr {
+    background-color: var(--color-header-background);
+    border-bottom: 4px solid var(--color-outline);
+}
+.policy-table th:first-child {
+    border-top-left-radius: 0.5rem;
+}
+.policy-table th:last-child {
+    border-top-right-radius: 0.5rem;
+}
+.major-version-separator td {
+    border-bottom: 4px solid var(--color-outline);
+}
+.major-version-separator:last-child {
+    border-bottom: none;
+}
+.status {
+    white-space: nowrap;
+}
+.status-full-support {
+    background-color: var(--color-status-full-bg);
+}
+.status-partial-support {
+    background-color: var(--color-status-partial-bg);
+}
+.status-unsupported {
+    background-color: var(--color-status-unsupported-bg);
+}
+.status-pre-release {
+    background-color: var(--color-status-prerelease-bg);
+}
+.status-in-development {
+    background-color: var(--color-status-in-development-bg);
+}
+.status-planned {
+    background-color: var(--color-status-planned-bg);
+}
+.status-invalid-dates {
+    background-color: var(--color-status-invalid-dates-bg);
+}
+.status-unknown {
+    background-color: var(--color-status-unknown-bg);
+}
+.notes-section {
+    margin-top: 2rem;
+    text-align: left;
+}
+.notes-section p {
+    margin-top: 0.5rem;
+}
+.notes-section p:first-child {
+    margin-top: 0;
+}
+.notes-section p:nth-child(3) {
+    margin-top: 1rem;
+}
