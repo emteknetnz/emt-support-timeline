@@ -1,9 +1,14 @@
 :root {
+    /* Font sizes */
+    --font-size-regular: 16px;
+    --font-size-small: 13px;
+
     /* Primary Palette */
     --color-background-light: #ffffff; /* White */
     --color-header-background: #CFD8DC; /* Material Design Blue Grey 100 */
     --color-text-default: #212121;   /* Material Design Grey 900 */
     --color-outline: #78909C;  /* Material Design Blue Grey 400 */
+    --color-outline-light: #B0BEC5;  /* Material Design Blue Grey 200 */
     --color-table-background: #ffffff; /* White for table background */
 
     /* Status Colors */
@@ -32,7 +37,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: 16px;
+    font-size: var(--font-size-regular);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -92,8 +97,9 @@ body {
 }
 .notes-table th,
 .notes-table td {
-    border: 1px solid var(--color-outline);
+    border: 1px solid var(--color-outline-light);
     padding: 0.75rem 1rem;
+    font-size: var(--font-size-small);
 }
 .notes-table th:nth-of-type(1),
 .notes-table td:nth-of-type(1) {
