@@ -13,7 +13,7 @@
         'Support ends',
     ];
 
-    // Consts used for different status
+    // Consts used for different statuses
     const STATUS_FULL_SUPPORT = 'Full support';
     const STATUS_PARTIAL_SUPPORT = 'Partial support';
     const STATUS_UNSUPPORTED = 'Unsupported';
@@ -23,7 +23,7 @@
     const STATUS_INVALID_DATES = 'Invalid Dates';
     const STATUS_UNKNOWN = 'Unknown';
 
-    // Map of status to css class used to denote staus
+    // Map of status to css class
     const statusClasses = [
         [STATUS_FULL_SUPPORT, 'status-full-support'],
         [STATUS_PARTIAL_SUPPORT, 'status-partial-support'],
