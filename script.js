@@ -46,7 +46,9 @@
         return resonseJson.data;
     }
 
-    // Get a date object of using NZ time
+    /**
+     * Create a date object of the current NZ time
+     */
     function getCurrentDateNZT() {
         const formatter = new Intl.DateTimeFormat([], {
             timeZone: 'Pacific/Auckland',
@@ -69,6 +71,9 @@
         );
     }
 
+    /**
+     * Renders the support timeline table into the element with the specified ID
+     */
     async function renderTable(selector) {
         const div = document.getElementById(elementId);
         const table = document.createElement('table');
@@ -94,7 +99,6 @@
         let currentMajor = null;
 
         for (const record of data) {
-
             const version = record.version;
             const majorVersion = version.split('.')[0];
 
