@@ -1,6 +1,6 @@
 :root {
     /* Primary Palette */
-    --color-background-light: #ECEFF1; /* Material Design Blue Grey 50 */
+    --color-background-light: #ffffff; /* White */
     --color-header-background: #CFD8DC; /* Material Design Blue Grey 100 */
     --color-text-default: #212121;   /* Material Design Grey 900 */
     --color-outline: #78909C;  /* Material Design Blue Grey 400 */
@@ -69,7 +69,8 @@ body {
     text-align: left;
     background-color: var(--color-table-background);
 }
-.policy-table th, .policy-table td {
+.policy-table th,
+.policy-table td {
     border: 1px solid var(--color-outline);
     padding: 0.75rem 1rem;
 }
@@ -82,6 +83,21 @@ body {
 }
 .policy-table th:last-child {
     border-top-right-radius: 0.5rem;
+}
+.notes-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: var(--color-table-background);
+}
+.notes-table th,
+.notes-table td {
+    border: 1px solid var(--color-outline);
+    padding: 0.75rem 1rem;
+}
+.notes-table th:nth-of-type(1),
+.notes-table td:nth-of-type(1) {
+    width: 20%;
 }
 .major-version-separator td {
     border-bottom: 4px solid var(--color-outline);
