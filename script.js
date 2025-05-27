@@ -37,7 +37,8 @@
     }
 
     function renderTable(selector) {
-        const tbody = document.querySelector(selector);
+        const table = document.querySelector(selector);
+        const tbody = table.querySelector('tbody');
         
         // Get the current date in NZ time
         const formatter = new Intl.DateTimeFormat([], {
@@ -60,10 +61,25 @@
             getPart('second'),
         );
         
+        let currentMajor = null;
+
         for (const [index, dataItem] of window.__supportTimelineData.entries()) {
-            const row = document.createElement('tr');
+
             const version = dataItem.version;
             const majorVersion = version.split('.')[0];
+
+            if (majorVersion !== currentMajor) {
+                const cmsRow = document.createElement('tr');
+                const cmsCell = document.createElement('td');
+                cmsCell.innerText = 'CMS ' + majorVersion;
+                cmsCell.colSpan = 6;
+                cmsCell.classList.add('cms-version');
+                cmsRow.appendChild(cmsCell);
+                tbody.appendChild(cmsRow);
+                currentMajor = majorVersion;
+            }
+
+            const row = document.createElement('tr');
             const releaseDate = parseDate(dataItem.releaseDate);
             const partialSupportDate = parseDate(dataItem.partialSupportStarts);
             const endOfLifeDate = parseDate(dataItem.supportEnds);
@@ -111,15 +127,9 @@
                 }
             }
 
-            // Apply major version separator if needed
-            const nextDataItem = window.__supportTimelineData[index + 1]; 
-            if (nextDataItem && nextDataItem.version.split('.')[0] !== majorVersion) {
-                row.classList.add('major-version-separator');
-            }
-
             tbody.appendChild(row);
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => renderTable('#policyTable tbody'));
+    document.addEventListener('DOMContentLoaded', () => renderTable('#supportTimelinePolicyTable'));
 })();
