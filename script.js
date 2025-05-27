@@ -1,4 +1,19 @@
 (function() {
+    // The id of the element used to house the table
+    // Must have a data-url attribute pointing to the url where data json is fetched from
+    const elementId = 'supportTimeline';
+
+    // The text used in each header cell
+    const headers = [
+        'Status', 
+        'CMS Version', 
+        'Support length', 
+        'Release date', 
+        'Partial support ends', 
+        'Support ends',
+    ];
+
+    // Consts used for different status
     const STATUS_FULL_SUPPORT = 'Full support';
     const STATUS_PARTIAL_SUPPORT = 'Partial support';
     const STATUS_UNSUPPORTED = 'Unsupported';
@@ -8,6 +23,7 @@
     const STATUS_INVALID_DATES = 'Invalid Dates';
     const STATUS_UNKNOWN = 'Unknown';
 
+    // Map of status to css class used to denote staus
     const statusClasses = [
         [STATUS_FULL_SUPPORT, 'status-full-support'],
         [STATUS_PARTIAL_SUPPORT, 'status-partial-support'],
@@ -19,28 +35,19 @@
         [STATUS_UNKNOWN, 'status-unknown'],
     ];
 
-    // Helper to parse date strings (e.g., "January 1 2020", "October 2024") into Date objects
-    function parseDate(dateString) {
-        let formattedDateString = dateString;
-        const parts = dateString.split(' ');
-        // "Month Year" format
-        if (parts.length === 2) {
-            // Assume 15th on the month for consistency
-            formattedDateString = parts[0] + ' 15, ' + parts[1];
-        }
-        const date = new Date(formattedDateString);
-        if (isNaN(date.getTime())) {
-            console.error('Failed to parse date: "' + dateString + '" -> "' + formattedDateString + '"');
-            return null;
-        }
-        return date;
+    /**
+     * Fetches data from the URL specified in data-url of the target element
+     */
+    async function fetchData() {
+        const div = document.getElementById(elementId);
+        const url = div.getAttribute('data-url');
+        const response = await fetch(url);
+        const resonseJson = await response.json();
+        return resonseJson.data;
     }
 
-    function renderTable(selector) {
-        const table = document.querySelector(selector);
-        const tbody = table.querySelector('tbody');
-        
-        // Get the current date in NZ time
+    // Get a date object of using NZ time
+    function getCurrentDateNZT() {
         const formatter = new Intl.DateTimeFormat([], {
             timeZone: 'Pacific/Auckland',
             year: 'numeric',
@@ -52,7 +59,7 @@
         });
         const parts = formatter.formatToParts(new Date());
         const getPart = (part) => parts.filter(obj => obj.type == part)[0].value;
-        const currentDateNZT = new Date(
+        return new Date(
             getPart('year'),
             getPart('month') - 1,
             getPart('day'),
@@ -60,12 +67,35 @@
             getPart('minute'),
             getPart('second'),
         );
-        
+    }
+
+    async function renderTable(selector) {
+        const div = document.getElementById(elementId);
+        const table = document.createElement('table');
+        div.appendChild(table);
+        table.classList.add('policy-table');
+
+        // Create header content
+        const thead = document.createElement('thead');
+        table.appendChild(thead);
+        const headerRow = document.createElement('tr');
+        thead.appendChild(headerRow);
+        for (const item of headers) {
+            const headerCell = document.createElement('th');
+            headerCell.innerText = item;
+            headerRow.appendChild(headerCell);
+        }
+
+        // Create body content
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        const data = await fetchData();
+        const currentDateNZT = getCurrentDateNZT();
         let currentMajor = null;
 
-        for (const [index, dataItem] of window.__supportTimelineData.entries()) {
+        for (const record of data) {
 
-            const version = dataItem.version;
+            const version = record.version;
             const majorVersion = version.split('.')[0];
 
             if (majorVersion !== currentMajor) {
@@ -80,12 +110,12 @@
             }
 
             const row = document.createElement('tr');
-            const releaseDate = parseDate(dataItem.releaseDate);
-            const partialSupportDate = parseDate(dataItem.partialSupportStarts);
-            const endOfLifeDate = parseDate(dataItem.supportEnds);
+            const releaseDate = new Date(record.releaseDate);
+            const partialSupportDate = new Date(record.partialSupport);
+            const endOfLifeDate = new Date(record.supportEnds);
 
             // Status can be manually set, which it should be for "Pre-release" and "In development"
-            const dataStatus = dataItem.status;
+            const dataStatus = record.status;
 
             // Dynamically work out status based on date
             let status = STATUS_UNKNOWN;
@@ -107,10 +137,10 @@
             const cellContent = [
                 status, 
                 version, 
-                dataItem.supportLength, 
-                dataItem.releaseDate, 
-                dataItem.partialSupportStarts, 
-                dataItem.supportEnds,
+                record.supportLength, 
+                record.releaseDate, 
+                record.partialSupport, 
+                record.supportEnds,
             ];
             for (const item of cellContent) {
                 const cell = document.createElement('td');
@@ -131,5 +161,5 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => renderTable('#supportTimelinePolicyTable'));
+    document.addEventListener('DOMContentLoaded', () => renderTable());
 })();
