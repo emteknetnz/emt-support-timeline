@@ -11,3 +11,5 @@ python3 -m http.server 8000
 ```
 
 Dates for data.json must be in ISO-8601 format
+
+![Screenshot](screenshot.png)
