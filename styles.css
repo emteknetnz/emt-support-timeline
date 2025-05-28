@@ -1,37 +1,51 @@
 :root {
     /* Font sizes */
-    --font-size-regular: 16px;
+    --font-size-regular: 15px;
     --font-size-small: 13px;
 
     /* Primary Palette */
-    --color-background-light: #ffffff; /* White */
-    --color-text-default: #212121;   /* Material Design Grey 900 */
-    --color-outline: #78909C;  /* Material Design Blue Grey 400 */
-    --color-outline-light: #B0BEC5;  /* Material Design Blue Grey 200 */
-    --color-table-background: #ffffff; /* White for table background */
+    --color-text-dark: #212121;
+    --color-text-light: #EEEEEE;
+
+    /* Table */
+    --color-outline: #787878;
     
     /* Header */
-    --color-header-bg: #666666;
-    --color-header-text: white;
+    --color-header-bg: #555555;
+    --color-header-text: var(--color-text-light);
 
-    /* CMS Version */
-    --color-cms-version-bg: #777777;
-    --color-cms-version-text: white;
+    /* CMS version row */
+    --color-cms-version-bg: #666666;
+    --color-cms-version-text: var(--color-text-light);
 
     /* Status colors */
-    --color-status-full-bg: #81C784; /* Material Design Green 300 */
-    --color-status-partial-bg: #FFE082; /* Slightly Darker Light Amber/Yellow (Material Design Amber 200) */
-    --color-status-unsupported-bg: #EF9A9A; /* Material Design Red 200 */
-    --color-status-prerelease-bg: #80DEEA; /* Slightly Darker Light Cyan/Teal (Material Design Cyan 200) */
-    --color-status-in-development-bg: #90CAF9; /* Slightly Darker Light Blue (Material Design Blue 200) */
-    --color-status-planned-bg: #B0BEC5; /* Slightly Darker Light Blue-Grey (Material Design Blue Grey 200) */
-    --color-status-invalid-dates-bg: #EF9A9A; /* Consistent with new unsupported red (MD Red 200) */
-    --color-status-unknown-bg: #E0E0E0; /* Light Grey (Material Design Grey 300) */
+    --color-status-unsupported-bg: #CD0F69;
+    --color-status-unsupported-text: var(--color-text-light);
+
+    --color-status-partial-bg: #FFCD00;
+    --color-status-partial-text: var(--color-text-dark);
+
+    --color-status-full-bg: #3CDBC0;
+    --color-status-full-text: var(--color-text-dark);
+
+    --color-status-pre-bg: #055BE0;
+    --color-status-pre-text: var(--color-text-light);
+
+    --color-status-dev-bg: #033594;
+    --color-status-dev-text: var(--color-text-light);
+
+    --color-status-planned-bg: #B0BEC5;
+    --color-status-planned-text: var(--color-text-dark);
+
+    --color-status-invalid-bg: red;
+    --color-status-invalid-text: var(--color-text-light);
+
+    --color-status-unknown-bg: purple;
+    --color-status-unknown-text: var(--color-text-light);
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: var(--font-size-regular);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,13 +53,7 @@ body {
     min-height: 100vh;
     padding: 1rem;
     margin: 0;
-    background-color: var(--color-background-light);
-    color: var(--color-text-default);
-}
-.cms-version {
-    background-color: var(--color-cms-version-bg);
-    color: var(--color-cms-version-text);
-    font-weight: bold;
+    background-color: #f9f9f9;
 }
 .container-wrapper {
     padding: 2rem;
@@ -59,75 +67,67 @@ body {
     font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    text-align: left;
 }
-.table-description {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-}
-.table-wrapper {
-    overflow-x: auto;
-}
+
 .policy-table {
     width: 100%;
+    max-width: 750px;
     border-collapse: collapse;
     text-align: left;
-    background-color: var(--color-table-background);
 }
 .policy-table th,
 .policy-table td {
     border: 1px solid var(--color-outline);
     padding: 0.75rem 1rem;
+    font-size: var(--font-size-regular);
 }
 .policy-table thead tr {
     background-color: var(--color-header-bg);
     color: var(--color-header-text);
 }
+.cms-version {
+    background-color: var(--color-cms-version-bg);
+    color: var(--color-cms-version-text);
+    font-weight: bold;
+}
 .status {
     white-space: nowrap;
 }
-.status-full-support {
+.status-full td {
     background-color: var(--color-status-full-bg);
+    color: var(--color-status-full-text);
 }
-.status-partial-support {
+.status-partial td {
     background-color: var(--color-status-partial-bg);
+    color: var(--color-status-partial-text);
 }
-.status-unsupported {
+.status-unsupported td {
     background-color: var(--color-status-unsupported-bg);
+    color: var(--color-status-unsupported-text);
 }
-.status-pre-release {
-    background-color: var(--color-status-prerelease-bg);
+.status-pre td {
+    background-color: var(--color-status-pre-bg);
+    color: var(--color-status-pre-text);
 }
-.status-in-development {
-    background-color: var(--color-status-in-development-bg);
+.status-dev td {
+    background-color: var(--color-status-dev-bg);
+    color: var(--color-status-dev-text);
 }
-.status-planned {
+.status-planned td {
     background-color: var(--color-status-planned-bg);
+    color: var(--color-status-planned-text);
 }
-.status-invalid-dates {
-    background-color: var(--color-status-invalid-dates-bg);
+.status-invalid td {
+    background-color: var(--color-status-invalid-bg);
+    color: var(--color-status-invalid-text);
 }
-.status-unknown {
+.status-unknown td {
     background-color: var(--color-status-unknown-bg);
+    color: var(--color-status-unknown-text);
 }
-/*
 .notes-section {
     margin-top: 2rem;
     text-align: left;
-}
-.notes-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    background-color: var(--color-table-background);
-}
-.notes-table th,
-.notes-table td {
-    border: 1px solid var(--color-outline-light);
-    padding: 0.75rem 1rem;
     font-size: var(--font-size-small);
 }
-.notes-table th:nth-of-type(1),
-.notes-table td:nth-of-type(1) {
-    width: 20%;
-}
-*/

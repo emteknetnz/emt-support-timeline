@@ -9,29 +9,29 @@
         'CMS Version', 
         'Support length', 
         'Release date', 
-        'Partial support ends', 
+        'Support transition', 
         'Support ends',
     ];
 
     // Consts used for different statuses
-    const STATUS_FULL_SUPPORT = 'Full support';
-    const STATUS_PARTIAL_SUPPORT = 'Partial support';
-    const STATUS_UNSUPPORTED = 'Unsupported';
-    const STATUS_PRE_RELEASE = 'Pre-release';
-    const STATUS_IN_DEVELOPMENT = 'In development';
+    const STATUS_FULL = 'Full support';
+    const STATUS_PARTIAL = 'Partial support';
+    const STATUS_UNSUPPORTED = 'End of life';
+    const STATUS_PRE = 'Pre-release';
+    const STATUS_DEV = 'In development';
     const STATUS_PLANNED = 'Planned';
-    const STATUS_INVALID_DATES = 'Invalid Dates';
+    const STATUS_INVALID = 'Invalid Dates';
     const STATUS_UNKNOWN = 'Unknown';
 
     // Map of status to css class
     const statusClasses = [
-        [STATUS_FULL_SUPPORT, 'status-full-support'],
-        [STATUS_PARTIAL_SUPPORT, 'status-partial-support'],
+        [STATUS_FULL, 'status-full'],
+        [STATUS_PARTIAL, 'status-partial'],
         [STATUS_UNSUPPORTED, 'status-unsupported'],
-        [STATUS_PRE_RELEASE, 'status-pre-release'],
-        [STATUS_IN_DEVELOPMENT, 'status-in-development'],
+        [STATUS_PRE, 'status-pre'],
+        [STATUS_DEV, 'status-dev'],
         [STATUS_PLANNED, 'status-planned'],
-        [STATUS_INVALID_DATES, 'status-invalid-dates'],
+        [STATUS_INVALID, 'status-invalid'],
         [STATUS_UNKNOWN, 'status-unknown'],
     ];
 
@@ -69,6 +69,41 @@
             getPart('minute'),
             getPart('second'),
         );
+    }
+
+    /**
+     * Check if a date string contains a day part
+     */
+    function dateStrContainsDay(dateStr) {
+        return dateStr.match(/^\d{4}-\d{2}-\d{2}$/)
+    }
+
+    /**
+     * Convert an ISO-8601 (YYYY-MM-DD) date string to a date object
+     * or convert a (YYYY-MM) to a date with the day part set to "28"
+     */
+    function createDate(dateStr) {
+        if (!dateStrContainsDay(dateStr)) {
+            return new Date(dateStr + '-28');
+        } else {
+            return new Date(dateStr);
+        }
+    }
+
+    /**
+     * Format an ISO-8601 (YYYY-MM-DD) date string to "<Day> <Month> <Year>"
+     * or convert a (YYYY-MM) date string to "<Month> <Year>"
+     */
+    function formatDateStr(dateStr) {
+        const options = {
+            year: 'numeric',
+            month: 'long',
+        }
+        if (dateStrContainsDay(dateStr)) {
+            options.day = 'numeric';
+        }
+        const formatter = new Intl.DateTimeFormat([], options);
+        return formatter.format(createDate(dateStr));
     }
 
     /**
@@ -114,9 +149,9 @@
             }
 
             const row = document.createElement('tr');
-            const releaseDate = new Date(record.releaseDate);
-            const partialSupportDate = new Date(record.partialSupport);
-            const endOfLifeDate = new Date(record.supportEnds);
+            const releaseDate = createDate(record.releaseDate);
+            const partialSupportDate = createDate(record.partialSupport);
+            const endOfLifeDate = createDate(record.supportEnds);
 
             // Status can be manually set, which it should be for "Pre-release" and "In development"
             const dataStatus = record.status;
@@ -126,11 +161,11 @@
             if (dataStatus) {
                 status = dataStatus;
             } else if (!releaseDate || !partialSupportDate || !endOfLifeDate) {
-                status = STATUS_INVALID_DATES;
+                status = STATUS_INVALID;
             } else if (currentDateNZT >= releaseDate && currentDateNZT < partialSupportDate) {
-                status = STATUS_FULL_SUPPORT;
+                status = STATUS_FULL;
             } else if (currentDateNZT >= partialSupportDate && currentDateNZT < endOfLifeDate) {
-                status = STATUS_PARTIAL_SUPPORT;
+                status = STATUS_PARTIAL;
             } else if (currentDateNZT >= endOfLifeDate) {
                 status = STATUS_UNSUPPORTED;
             } else if (currentDateNZT < endOfLifeDate) {
@@ -139,12 +174,12 @@
 
             // Create and append cells for the row
             const cellContent = [
-                status, 
-                version, 
-                record.supportLength, 
-                record.releaseDate, 
-                record.partialSupport, 
-                record.supportEnds,
+                status,
+                version,
+                record.supportLength,
+                formatDateStr(record.releaseDate),
+                formatDateStr(record.partialSupport),
+                formatDateStr(record.supportEnds),
             ];
             for (const item of cellContent) {
                 const cell = document.createElement('td');

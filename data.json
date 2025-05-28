@@ -14,79 +14,79 @@
             "supportLength": "Extended",
             "releaseDate": "2023-04-26",
             "partialSupport": "2024-04-17",
-            "supportEnds": "2025-06-15"
+            "supportEnds": "2025-06"
         },
         {
             "version": "5.2",
             "status": null,
             "supportLength": "Standard",
-            "releaseDate": "2024-04-15",
-            "partialSupport": "2024-10-15",
-            "supportEnds": "2025-04-15"
+            "releaseDate": "2024-04",
+            "partialSupport": "2024-10",
+            "supportEnds": "2025-04"
         },
         {
             "version": "5.3",
             "status": null,
             "supportLength": "Standard",
-            "releaseDate": "2024-11-15",
-            "partialSupport": "2025-05-15",
-            "supportEnds": "2025-11-15"
+            "releaseDate": "2024-11",
+            "partialSupport": "2025-05",
+            "supportEnds": "2025-11"
         },
         {
             "version": "5.4",
             "status": null,
             "supportLength": "Extended",
-            "releaseDate": "2025-04-15",
-            "partialSupport": "2026-04-15",
-            "supportEnds": "2027-04-15"
+            "releaseDate": "2025-04",
+            "partialSupport": "2026-04",
+            "supportEnds": "2027-04"
         },
         {
             "version": "6.0",
             "status": "Pre-release",
             "supportLength": "Standard",
-            "releaseDate": "2025-06-15",
-            "partialSupport": "2025-12-15",
-            "supportEnds": "2026-06-15"
+            "releaseDate": "2025-06",
+            "partialSupport": "2025-12",
+            "supportEnds": "2026-06"
         },
         {
             "version": "6.1",
             "status": "In development",
             "supportLength": "Standard",
-            "releaseDate": "2025-10-15",
-            "partialSupport": "2026-04-15",
-            "supportEnds": "2026-10-15"
+            "releaseDate": "2025-10",
+            "partialSupport": "2026-04",
+            "supportEnds": "2026-10"
         },
         {
             "version": "6.2",
             "status": null,
             "supportLength": "Standard",
-            "releaseDate": "2026-04-15",
-            "partialSupport": "2026-10-15",
-            "supportEnds": "2027-04-15"
+            "releaseDate": "2026-04",
+            "partialSupport": "2026-10",
+            "supportEnds": "2027-04"
         },
         {
             "version": "6.3",
             "status": null,
             "supportLength": "Standard",
-            "releaseDate": "2026-10-15",
-            "partialSupport": "2027-04-15",
-            "supportEnds": "2027-10-15"
+            "releaseDate": "2026-10",
+            "partialSupport": "2027-04",
+            "supportEnds": "2027-10"
         },
         {
             "version": "6.4",
             "status": null,
             "supportLength": "Extended",
-            "releaseDate": "2027-04-15",
-            "partialSupport": "2028-04-15",
-            "supportEnds": "2029-04-15"
+            "releaseDate": "2027-04",
+            "partialSupport": "2028-04",
+            "supportEnds": "2029-04"
         },
         {
             "version": "7.0",
             "status": null,
             "supportLength": "Standard",
-            "releaseDate": "2027-04-15",
-            "partialSupport": "2027-10-15",
-            "supportEnds": "2028-04-15"
+            "releaseDate": "2027-04",
+            "partialSupport": "2027-10",
+            "supportEnds": "2028-04"
         }
     ]
 }
