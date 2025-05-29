@@ -61,7 +61,7 @@
             getPart(parts, 'day'),
             getPart(parts, 'hour'),
             getPart(parts, 'minute'),
-            getPart(parts, 'second'),
+            getPart(parts, 'second')
         );
     }
 
@@ -105,9 +105,10 @@
      */
     function createTableRowsFrom(tbody, data) {
         const currentDateNZT = getCurrentDateNZT();
-        let currentMajor = null;
+        var currentMajor = null;
 
-        for (const record of data) {
+        for (var i = 0; i < data.length; i++) {
+            const record = data[i];
             const version = record.version;
             const majorVersion = version.split('.')[0];
 
@@ -131,7 +132,7 @@
             const dataStatus = record.status;
 
             // Dynamically work out status based on date
-            let status = STATUS_UNKNOWN;
+            var status = STATUS_UNKNOWN;
             if (dataStatus) {
                 status = dataStatus;
             } else if (!releaseDate || !partialSupportDate || !endOfLifeDate) {
@@ -161,7 +162,8 @@
                 formatDateStr(record.partialSupport),
                 formatDateStr(record.supportEnds),
             ];
-            for (const item of cellContent) {
+            for (var j = 0; j < cellContent.length; j++) {
+                const item = cellContent[i];
                 const cell = document.createElement('td');
                 cell.innerText = item;
                 row.appendChild(cell);
@@ -169,8 +171,10 @@
 
             // Apply status background class
             row.classList.add('status');
-            for (const arr of statusClasses) {
-                const [_status, className] = arr;
+            for (var j = 0; j < statusClasses.length; j++) {
+                const arr = statusClasses[j];
+                const status = arr[0];
+                const className = arr[1];
                 if (status === _status) {
                     row.classList.add(className);
                 }
@@ -199,7 +203,9 @@
         table.appendChild(thead);
         const headerRow = document.createElement('tr');
         thead.appendChild(headerRow);
-        for (const item of headers) {
+
+        for (var i = 0; i < headers.length; i++) {
+            const item = headers[i];
             const headerCell = document.createElement('th');
             headerCell.innerText = item;
             headerRow.appendChild(headerCell);
