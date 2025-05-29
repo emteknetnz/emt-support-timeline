@@ -1,68 +1,72 @@
-.support-timeline {
+/*
+Selector is ".support-timeline-table" not just ".support-timeline" so that it does not clash
+with the automatically added class from the page type ".support-timeline"
+*/
+.support-timeline-table {
     width: 100%;
     max-width: 750px;
     border-collapse: collapse;
     text-align: left;
 }
 
-.support-timeline th,
-.support-timeline td {
+.support-timeline-table th,
+.support-timeline-table td {
     border: 1px solid #787878;
     padding: 0.67rem 0.75rem;
     font-size: 14px;
 }
 
-.support-timeline thead tr {
+.support-timeline-table thead tr {
     background-color: #555555;
     color: #EEEEEE;
 }
 
-.support-timeline .cms-version {
+.support-timeline-table .cms-version {
     background-color: #666666;
     color: #EEEEEE;
     font-weight: bold;
 }
 
-.support-timeline .status {
+.support-timeline-table .status {
     white-space: nowrap;
 }
 
-.support-timeline .status-full td {
+.support-timeline-table .status-full td {
     background-color: #3CDBC0;
     color: #212121;
 }
 
-.support-timeline .status-partial td {
+.support-timeline-table .status-partial td {
     background-color: #FFCD00;
     color: #212121;
 }
 
-.support-timeline .status-eol td {
+.support-timeline-table .status-eol td {
     background-color: #CD0F69;
     color: #EEEEEE;
 }
 
-.support-timeline .status-pre td {
+.support-timeline-table .status-pre td {
     background-color: #055BE0;
     color: #EEEEEE;
 }
 
-.support-timeline .status-dev td {
+.support-timeline-table .status-dev td {
     background-color: #033594;
     color: #EEEEEE;
 }
 
-.support-timeline .status-planned td {
+.support-timeline-table .status-planned td {
     background-color: #B0BEC5;
     color: #212121;
 }
 
-.support-timeline .status-invalid td {
+.support-timeline-table .status-invalid td {
     background-color: red;
     color: #EEEEEE;
 }
 
-.support-timeline .status-unknown td {
+.support-timeline-table .status-unknown td {
     background-color: purple;
     color: #EEEEEE;
 }
