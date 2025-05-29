@@ -4,9 +4,12 @@ with the automatically added class from the page title ".support-timeline"
 */
 .support-timeline-table {
     width: 100%;
-    max-width: 750px;
     border-collapse: collapse;
     text-align: left;
+}
+
+.typography table.support-timeline-table {
+    max-width: 750px;
 }
 
 .support-timeline-table th,
