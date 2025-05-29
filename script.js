@@ -196,7 +196,7 @@
 
         const table = document.createElement('table');
         div.appendChild(table);
-        table.classList.add('support-timeline');
+        table.classList.add('support-timeline-table');
 
         // Create header content
         const thead = document.createElement('thead');

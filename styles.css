@@ -1,6 +1,6 @@
 /*
 Selector is ".support-timeline-table" not just ".support-timeline" so that it does not clash
-with the automatically added class from the page type ".support-timeline"
+with the automatically added class from the page title ".support-timeline"
 */
 .support-timeline-table {
     width: 100%;
