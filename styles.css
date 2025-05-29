@@ -19,8 +19,8 @@
     --color-cms-version-text: var(--color-text-light);
 
     /* Status colors */
-    --color-status-unsupported-bg: #CD0F69;
-    --color-status-unsupported-text: var(--color-text-light);
+    --color-status-eol-bg: #CD0F69;
+    --color-status-eol-text: var(--color-text-light);
 
     --color-status-partial-bg: #FFCD00;
     --color-status-partial-text: var(--color-text-dark);
@@ -102,9 +102,9 @@ body {
     background-color: var(--color-status-partial-bg);
     color: var(--color-status-partial-text);
 }
-.status-unsupported td {
-    background-color: var(--color-status-unsupported-bg);
-    color: var(--color-status-unsupported-text);
+.status-eol td {
+    background-color: var(--color-status-eol-bg);
+    color: var(--color-status-eol-text);
 }
 .status-pre td {
     background-color: var(--color-status-pre-bg);

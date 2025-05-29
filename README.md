@@ -10,6 +10,6 @@ Use a basic webserver run - these is needed some that the `fetch()` request to g
 python3 -m http.server 8000
 ```
 
-Dates for data.json must be in ISO-8601 format
+Dates for data.json must be in ISO-8601 format, though can omit the day portion
 
 ![Screenshot](screenshot.png)

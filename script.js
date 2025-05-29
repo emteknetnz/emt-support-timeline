@@ -9,14 +9,14 @@
         'CMS Version', 
         'Support length', 
         'Release date', 
-        'Support transition', 
+        'Partial support starts', 
         'Support ends',
     ];
 
     // Consts used for different statuses
     const STATUS_FULL = 'Full support';
     const STATUS_PARTIAL = 'Partial support';
-    const STATUS_UNSUPPORTED = 'End of life';
+    const STATUS_EOL = 'End of life';
     const STATUS_PRE = 'Pre-release';
     const STATUS_DEV = 'In development';
     const STATUS_PLANNED = 'Planned';
@@ -27,7 +27,7 @@
     const statusClasses = [
         [STATUS_FULL, 'status-full'],
         [STATUS_PARTIAL, 'status-partial'],
-        [STATUS_UNSUPPORTED, 'status-unsupported'],
+        [STATUS_EOL, 'status-eol'],
         [STATUS_PRE, 'status-pre'],
         [STATUS_DEV, 'status-dev'],
         [STATUS_PLANNED, 'status-planned'],
@@ -167,7 +167,13 @@
             } else if (currentDateNZT >= partialSupportDate && currentDateNZT < endOfLifeDate) {
                 status = STATUS_PARTIAL;
             } else if (currentDateNZT >= endOfLifeDate) {
-                status = STATUS_UNSUPPORTED;
+                status = STATUS_EOL;
+                // If more than 12 months past EOL, then do not show
+                const twelveMonthsAfterEOL = new Date(endOfLifeDate);
+                twelveMonthsAfterEOL.setFullYear(twelveMonthsAfterEOL.getFullYear() + 1);
+                if (currentDateNZT >= twelveMonthsAfterEOL) {
+                    continue;
+                }
             } else if (currentDateNZT < endOfLifeDate) {
                 status = STATUS_PLANNED;
             }
