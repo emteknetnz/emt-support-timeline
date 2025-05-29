@@ -1,7 +1,7 @@
 (function() {
     // The id of the element used to house the table
     // Must have a data-url attribute pointing to the url where data json is fetched from
-    const elementId = 'supportTimeline';
+    const elementId = 'SupportTimeline';
 
     // The text used in each header cell
     const headers = [
@@ -35,15 +35,10 @@
         [STATUS_UNKNOWN, 'status-unknown'],
     ];
 
-    /**
-     * Fetches data from the URL specified in data-url of the target element
-     */
-    async function fetchData() {
-        const div = document.getElementById(elementId);
-        const url = div.getAttribute('data-url');
-        const response = await fetch(url);
-        const resonseJson = await response.json();
-        return resonseJson.data;
+    function getPart(parts, part) {
+        return parts.filter(function(obj) {
+            return obj.type == part;
+        })[0].value;
     }
 
     /**
@@ -60,14 +55,13 @@
             second: 'numeric',
         });
         const parts = formatter.formatToParts(new Date());
-        const getPart = (part) => parts.filter(obj => obj.type == part)[0].value;
         return new Date(
-            getPart('year'),
-            getPart('month') - 1,
-            getPart('day'),
-            getPart('hour'),
-            getPart('minute'),
-            getPart('second'),
+            getPart(parts, 'year'),
+            getPart(parts, 'month') - 1,
+            getPart(parts, 'day'),
+            getPart(parts, 'hour'),
+            getPart(parts, 'minute'),
+            getPart(parts, 'second'),
         );
     }
 
@@ -107,29 +101,9 @@
     }
 
     /**
-     * Renders the support timeline table into the element with the specified ID
+     * Update the table with the given data that was just fetched
      */
-    async function renderTable(selector) {
-        const div = document.getElementById(elementId);
-        const table = document.createElement('table');
-        div.appendChild(table);
-        table.classList.add('policy-table');
-
-        // Create header content
-        const thead = document.createElement('thead');
-        table.appendChild(thead);
-        const headerRow = document.createElement('tr');
-        thead.appendChild(headerRow);
-        for (const item of headers) {
-            const headerCell = document.createElement('th');
-            headerCell.innerText = item;
-            headerRow.appendChild(headerCell);
-        }
-
-        // Create body content
-        const tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-        const data = await fetchData();
+    function createTableRowsFrom(tbody, data) {
         const currentDateNZT = getCurrentDateNZT();
         let currentMajor = null;
 
@@ -206,5 +180,49 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => renderTable());
+    /**
+     * Renders the support timeline table into the element with the specified ID
+     */
+    function renderTable(selector) {
+        const div = document.getElementById(elementId);
+        if (!div) {
+            return;
+        }
+        const dataUrl = div.getAttribute('data-url');
+
+        const table = document.createElement('table');
+        div.appendChild(table);
+        table.classList.add('policy-table');
+
+        // Create header content
+        const thead = document.createElement('thead');
+        table.appendChild(thead);
+        const headerRow = document.createElement('tr');
+        thead.appendChild(headerRow);
+        for (const item of headers) {
+            const headerCell = document.createElement('th');
+            headerCell.innerText = item;
+            headerRow.appendChild(headerCell);
+        }
+
+        // Create body content
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        
+        // Use .then() rather than async/await because the version of grunt-uglifier
+        // is too ancient to understand async/await
+        // It's also too ancient to understand arrow methods
+        fetch(dataUrl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(responseJson) {
+                const data = responseJson.data;
+                createTableRowsFrom(tbody, data);
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderTable();
+    });
 })();
