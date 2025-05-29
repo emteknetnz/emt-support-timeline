@@ -163,7 +163,7 @@
                 formatDateStr(record.supportEnds),
             ];
             for (var j = 0; j < cellContent.length; j++) {
-                const item = cellContent[i];
+                const item = cellContent[j];
                 const cell = document.createElement('td');
                 cell.innerText = item;
                 row.appendChild(cell);
@@ -173,7 +173,7 @@
             row.classList.add('status');
             for (var j = 0; j < statusClasses.length; j++) {
                 const arr = statusClasses[j];
-                const status = arr[0];
+                const _status = arr[0];
                 const className = arr[1];
                 if (status === _status) {
                     row.classList.add(className);
@@ -196,7 +196,7 @@
 
         const table = document.createElement('table');
         div.appendChild(table);
-        table.classList.add('policy-table');
+        table.classList.add('support-timeline');
 
         // Create header content
         const thead = document.createElement('thead');
