@@ -1,0 +1,119 @@
+{
+    "data": [
+        {
+            "version": "4.13",
+            "supportLength": "Extended",
+            "releaseDate": "2023-04-26",
+            "partialSupport": "2024-04-17",
+            "supportEnds": "2025-06",
+            "features": []
+        },
+        {
+            "version": "5.2",
+            "supportLength": "Standard",
+            "releaseDate": "2024-04",
+            "partialSupport": "2024-10",
+            "supportEnds": "2025-04",
+            "features": []
+        },
+        {
+            "version": "5.3",
+            "supportLength": "Standard",
+            "releaseDate": "2024-11",
+            "partialSupport": "2025-05",
+            "supportEnds": "2025-11",
+            "features": []
+        },
+        {
+            "version": "5.4",
+            "supportLength": "Extended",
+            "releaseDate": "2025-04",
+            "partialSupport": "2026-04",
+            "supportEnds": "2027-04",
+            "features": []
+        },
+        {
+            "version": "5.7",
+            "supportLength": "Extended",
+            "releaseDate": "2027-04",
+            "partialSupport": "2028-04",
+            "supportEnds": "2029-04",
+            "features": []
+        },
+        {
+            "version": "6.0",
+            "supportLength": "Standard",
+            "releaseDate": "2025-06",
+            "partialSupport": "2025-12",
+            "supportEnds": "2026-06",
+            "features": []
+        },
+        {
+            "version": "6.1",
+            "supportLength": "Standard",
+            "releaseDate": "2025-10",
+            "partialSupport": "2026-04",
+            "supportEnds": "2026-10",
+            "features": [
+                {
+                    "title": "Performance improvements",
+                    "description": "Performance improvement within the CMS, rather than within specific applications."
+                },
+                {
+                    "title": "Non-blocking sessions",
+                    "description": "Replaces blocking sessions and allows multiple concurrent requests to be completed for the same person in the same browser."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "supportLength": "Standard",
+            "releaseDate": "2026-04",
+            "partialSupport": "2026-10",
+            "supportEnds": "2027-04",
+            "features": [
+                {
+                    "title": "Last saved",
+                    "description": "Allows editors to view how recently a page being edited has been saved, reminding them to save their in progress work."
+                },
+                {
+                    "title": "Duplicate blocks",
+                    "description": "Duplicate existing blocks and move these to different pages."
+                },
+                {
+                    "title": "In-CMS accessibility improvements",
+                    "description": "Determine and deliver a valuable set of accessibility improvements to the CMS itself."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "supportLength": "Standard",
+            "releaseDate": "2026-10",
+            "partialSupport": "2027-04",
+            "supportEnds": "2027-10",
+            "features": [
+                {
+                    "title": "In-CMS user support documentation",
+                    "description": "In-CMS user documentation to help customers understand what's available and how to make it work."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "supportLength": "Extended",
+            "releaseDate": "2027-04",
+            "partialSupport": "2028-04",
+            "supportEnds": "2029-04",
+            "features": []
+        },
+        {
+            "version": "7.0",
+            "supportLength": "Standard",
+            "releaseDate": "2027-04",
+            "partialSupport": "2027-10",
+            "supportEnds": "2028-04",
+            "features": []
+        }
+    ]
+}
