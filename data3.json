@@ -1,0 +1,159 @@
+{
+    "data": [
+        {
+            "version": "4.13",
+            "statusOverride": null,
+            "supportLength": "Extended",
+            "releaseDate": "2023-04-26",
+            "releaseDateExtra": null,
+            "partialSupport": "2024-04-27",
+            "partialSupportExtra": null,
+            "supportEnds": "2025-06-10",
+            "supportEndsExtra": null,
+            "features": []
+        },
+        {
+            "version": "5.2",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2024-04-15",
+            "releaseDateExtra": null,
+            "partialSupport": "2024-11-04",
+            "partialSupportExtra": null,
+            "supportEnds": "2025-05-05",
+            "supportEndsExtra": null,
+            "features": []
+        },
+        {
+            "version": "5.3",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2024-11-04",
+            "releaseDateExtra": null,
+            "partialSupport": "2025-04-10",
+            "partialSupportExtra": null,
+            "supportEnds": "2025-10-11",
+            "supportEndsExtra": null,
+            "features": []
+        },
+        {
+            "version": "5.4",
+            "statusOverride": null,
+            "supportLength": "Extended",
+            "releaseDate": "2025-04-10",
+            "releaseDateExtra": null,
+            "partialSupport": "2026-04-11",
+            "partialSupportExtra": null,
+            "supportEnds": "2027-04",
+            "supportEndsExtra": "2027-06",
+            "features": []
+        },
+        {
+            "version": "6.0",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2025-06-10",
+            "releaseDateExtra": null,
+            "partialSupport": "2025-10-13",
+            "partialSupportExtra": null,
+            "supportEnds": "2026-04-14",
+            "supportEndsExtra": null,
+            "features": []
+        },
+        {
+            "version": "6.1",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2025-10-13",
+            "releaseDateExtra": null,
+            "partialSupport": "2026-04",
+            "partialSupportExtra": null,
+            "supportEnds": "2026-10",
+            "supportEndsExtra": null,
+            "features": [
+                {
+                    "title": "Performance improvements",
+                    "description": "Performance improvement within the CMS, rather than within specific applications."
+                },
+                {
+                    "title": "Non-blocking sessions",
+                    "description": "Replaces blocking sessions and allows multiple concurrent requests to be completed for the same person in the same browser."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2026-04",
+            "releaseDateExtra": null,
+            "partialSupport": "2026-10",
+            "partialSupportExtra": null,
+            "supportEnds": "2027-04",
+            "supportEndsExtra": null,
+            "features": [
+                {
+                    "title": "Last saved",
+                    "description": "Allows editors to view how recently a page being edited has been saved, reminding them to save their in progress work."
+                },
+                {
+                    "title": "Duplicate blocks",
+                    "description": "Duplicate existing blocks and move these to different pages."
+                },
+                {
+                    "title": "In-CMS accessibility improvements",
+                    "description": "Determine and deliver a valuable set of accessibility improvements to the CMS itself."
+                },
+                {
+                    "title": "PHP 8.5 support",
+                    "description": "Add support for PHP 8.5 across all supported modules."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2026-10",
+            "releaseDateExtra": null,
+            "partialSupport": "2027-04",
+            "partialSupportExtra": null,
+            "supportEnds": "2027-10",
+            "supportEndsExtra": null,
+            "features": [
+                {
+                    "title": "In-CMS user support documentation",
+                    "description": "In-CMS user documentation to help customers understand what's available and how to make it work."
+                },
+                {
+                    "title": "Further in-CMS accessibility improvements",
+                    "description": "More accessibility improvements for the CMS."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "statusOverride": null,
+            "supportLength": "Extended",
+            "releaseDate": "2027-04",
+            "releaseDateExtra": null,
+            "partialSupport": "2028-04",
+            "partialSupportExtra": null,
+            "supportEnds": "2029-04",
+            "supportEndsExtra": "2029-06",
+            "features": []
+        },
+        {
+            "version": "7.0",
+            "statusOverride": null,
+            "supportLength": "Standard",
+            "releaseDate": "2027-04",
+            "releaseDateExtra": "2027-06",
+            "partialSupport": "2027-10",
+            "partialSupportExtra": null,
+            "supportEnds": "2028-04",
+            "supportEndsExtra": null,
+            "features": []
+        }
+    ]
+}
